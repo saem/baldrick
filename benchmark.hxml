@@ -2,6 +2,12 @@
 -cp benchmark
 -main Main
 
-#-js bin/benchmark.js
-#-hl bin/benchmark.hl
+--each
+
+-js bin/benchmark.js
+
+--next 
+-hl bin/benchmark.hl
+
+--next
 -cpp bin/benchmark

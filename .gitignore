@@ -1,6 +1,6 @@
 bin/
 turnip.json
-
+.haxelib
 
 # Created by https://www.gitignore.io/api/osx,linux,windows,intellij,visualstudiocode
 

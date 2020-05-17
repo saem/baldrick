@@ -1,6 +1,6 @@
 package baldrick;
 
-import haxe.ds.IntMap;
+// import haxe.ds.IntMap;
 import haxe.Serializer;
 import haxe.Unserializer;
 
@@ -168,12 +168,18 @@ class Entity {
     @:keep
     private function hxSerialize(s:Serializer):Void {
         s.serialize(id);
-        s.serialize(components);
+        s.serialize([for(k in components.keys()) k]);
+        s.serialize([for(c in components) c]);
     }
 
     @:keep
     private function hxUnserialize(u:Unserializer):Void {
         id = u.unserialize();
-        components = u.unserialize();
+        final componentsKeys: Array<Int> = u.unserialize();
+        final componentValues: Array<Component> = u.unserialize();
+        components = new IntMap<Component>();
+        for(i in 0...componentsKeys.length) {
+          components.set(componentsKeys[i], componentValues[i]);
+        }
     }
 }
